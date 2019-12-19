@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Finstagram</title>
+    </head>
+    <body>
+        <h1>Follow</h1>
+        <div>
+            <form action="/followAuth" method="post">
+                <input type="text" name="username" placeholder="Username" required/>
+                <br/>
+                <br/>
+                <input type="submit" name="button1" value="Follow">
+            </form>
+        </div>
+
+        <h3>Pending Follows</h3>
+        <div>
+            First SELECT a USER, then ACCEPT/DECLINE their follow request
+            <form action="/accept" method="post">
+
+            {% for i in data %}
+            <tr>
+                <input type="radio" name="follower" value={{i['username_follower']}}>
+                {{i['username_follower']}}
+                <br/>
+            </tr>
+            {% endfor %}
+            <br/>
+            <input type="submit" name="accept" value="Accept">
+            <input type="submit" name="accept" value="Decline">
+            </form>
+        </div>
+        </br>
+        <a href="/">Go back</a>
+
+        {% if error %}
+            {{ error }}
+        {% endif %}
+    </body>
+</html>

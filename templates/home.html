@@ -1,0 +1,35 @@
+<html>
+    <style>
+        h1 {
+            color: purple;
+            font-family: verdana;
+            text-align: center;
+            font-size: 300%;
+        }
+        a:link {
+            color: blueviolet;
+            text-align: center;
+            text-decoration: none;
+        }
+        a:hover {
+            color: rgb(40, 206, 206);
+            text-align: center;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    </style>
+    <head>
+        <title>Finstagram</title>
+    </head>
+    <body>
+        <h1>Hello, {{ username }}!</h1>
+        <div>
+            <ul>
+                <li><a href="/images">View Photos</a></li>
+                <li><a href="/upload">Upload an Image</a></li>
+                <li><a href="/follow">Follow a User</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

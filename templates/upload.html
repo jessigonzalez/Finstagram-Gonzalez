@@ -1,0 +1,53 @@
+<html>
+        <style>
+                .title {
+                    color: purple;
+                    font-family: verdana;
+                    text-align: center;
+                    font-size: 300%;
+                }
+                a:link {
+                    color: blueviolet;
+                    text-align: center;
+                    text-decoration: none;
+                }
+                a:hover {
+                    color: rgb(40, 206, 206);
+                    text-align: center;
+                    background-color: transparent;
+                    text-decoration: underline;
+                }
+            </style>
+    <head>
+        <title>Image Upload</title>
+    </head>
+    <body>
+        <h1>Upload an Image!</h1>
+        <div>
+            <form action="/uploadImage" method="post" enctype="multipart/form-data">
+                <input type="file" name="imageToUpload" accept="image/*" required/>
+                <br/>
+                <h4>Caption (Required)</h4>
+                Enter a space for no caption.
+                <input type="text" name="caption" placeholder="caption" required/><br/>
+                <h4>Share With (Required)</h4>
+                To share with everyone enter "public" in all lowercase</br>
+                To share with one group enter "private" in all lowercase</br>
+                <br><input type="text" name="private" placeholder = "private/public"required/>
+                <br/>
+                <br>
+                Group Name to share with:
+                <input type="text" name="friendgroup" placeholder="Friendgroup">
+                <br/>
+                <br>
+                <input type="submit" value="Upload">
+                <br/>
+            </form>
+        </div>
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        <br/>
+        <a href="/">Go back</a>
+    </body>
+</html>

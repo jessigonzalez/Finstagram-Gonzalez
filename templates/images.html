@@ -1,0 +1,76 @@
+<html>
+    <!---<head><link rel="stylesheet" href="images.css"></head>-->
+    <style>
+        h1 {
+            color: purple;
+            font-family: verdana;
+            text-align: center;
+            font-size: 300%;
+        }
+        h2{
+            text-align:center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size:150%
+        }
+        .finsta {
+            float: left;
+            margin: 100px;
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+        }
+        .finstaInfo{
+            float: left;
+            margin: 100px;
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+    <h1>Finstagram</h1>
+
+    <h2>Timeline</h2>
+        <div>
+            {% for image in images %}
+            <div class="finsta">
+                    <img src="/image/{{image.filepath}}" width="400"/><br/>
+            </div>
+            <div class="finstaInfo">
+            Caption: {{image.caption}}
+            <br/>
+            Photo Owner: {{image.photoOwner}}
+            <br/>
+            Photo ID: {{image.photoID}}
+            <form action="/tag" method="post">
+                <input type="text" name="username" placeholder="Username" required/>
+                <br/>
+                <input type="text" name="photoID" placeholder="PhotoID" required/>
+                <br/>
+                <input type="submit" name="button1" value="Tagged">
+            </form>
+            <h4>Information about image with photo ID: {{image.photoID}} </h4>
+            Posted on: {{image.postingdate}}
+            <br/>
+            Tagged (first name, last name): 
+            <br/>
+            {% if extra[image.photoID] %}
+                {% for name in extra[image.photoID] %}
+                    Name: {{name["firstName"]}}, {{name["lastName"]}}
+                    <br/>
+                {% endfor %}
+            {% else %}
+                None
+            {% endif %}
+            <br/>
+            <br/>
+            </div>
+            {% endfor %}
+        </div>
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        
+        <br/>
+        <a href="/">Go back</a>
+</html>
